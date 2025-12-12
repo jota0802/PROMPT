@@ -1,0 +1,30 @@
+{
+  "name": "prompt-protocol-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PROMPT Protocol Extension - Validate AI-generated code against PROMPT rules",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jota0802/PROMPT.git",
+    "directory": "extension"
+  },
+  "author": "PROMPT Protocol Team",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build --prefix packages/shared && npm run build --prefix packages/prompt-validator && npm run build --prefix packages/vscode-extension",
+    "dev": "npm run dev --prefix packages/vscode-extension",
+    "test": "npm run test --prefix packages/shared && npm run test --prefix packages/prompt-validator",
+    "lint": "npm run lint --prefix packages/shared && npm run lint --prefix packages/prompt-validator && npm run lint --prefix packages/vscode-extension",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules node_modules",
+    "install:all": "npm install && cd packages/shared && npm install && cd ../prompt-validator && npm install && cd ../vscode-extension && npm install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

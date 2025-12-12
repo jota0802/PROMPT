@@ -1,0 +1,96 @@
+{
+  "name": "prompt-protocol-vscode",
+  "displayName": "PROMPT Protocol Validator",
+  "description": "Validate AI-generated code against PROMPT Protocol rules in real-time",
+  "version": "0.1.0",
+  "publisher": "prompt-protocol",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "PROMPT Protocol",
+      "properties": {
+        "promptProtocol.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable PROMPT Protocol validation"
+        },
+        "promptProtocol.validateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate when saving files"
+        },
+        "promptProtocol.validateOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Validate while typing (may impact performance)"
+        },
+        "promptProtocol.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show PROMPT Protocol status in status bar"
+        },
+        "promptProtocol.severity.min": {
+          "type": "string",
+          "enum": ["error", "warning", "info"],
+          "default": "error",
+          "description": "Severity for [min] level violations"
+        },
+        "promptProtocol.severity.std": {
+          "type": "string",
+          "enum": ["error", "warning", "info"],
+          "default": "warning",
+          "description": "Severity for [std] level violations"
+        },
+        "promptProtocol.severity.max": {
+          "type": "string",
+          "enum": ["error", "warning", "info"],
+          "default": "info",
+          "description": "Severity for [max] level violations"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "promptProtocol.validateCurrentFile",
+        "title": "PROMPT: Validate Current File"
+      },
+      {
+        "command": "promptProtocol.validateWorkspace",
+        "title": "PROMPT: Validate Workspace"
+      },
+      {
+        "command": "promptProtocol.clearDiagnostics",
+        "title": "PROMPT: Clear Diagnostics"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "dev": "npm run build -- --watch",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.19.10",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4"
+  },
+  "dependencies": {
+  }
+}
