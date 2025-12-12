@@ -13,9 +13,30 @@ Welcome! This guide will help you integrate PROMPT Protocol into your developmen
 
 ## Installation
 
-### Step 1: Copy Template Files
+Choose your AI assistant and follow the corresponding setup:
 
-Copy these two files to your project's `.github/` directory:
+### For Cursor AI
+
+**Step 1: Copy `.cursorrules` to your project**
+
+```bash
+# From your project root
+curl -o .cursorrules https://raw.githubusercontent.com/yourusername/prompt-protocol/main/templates/.cursorrules
+```
+
+**Or manually:**
+1. Copy `templates/.cursorrules` from this repo
+2. Paste it in your project root (same level as package.json)
+
+**Step 2: Restart Cursor**
+
+That's it! Cursor will automatically read `.cursorrules` and apply PROMPT Protocol.
+
+---
+
+### For GitHub Copilot (VS Code)
+
+**Step 1: Copy template files to `.github/` directory**
 
 ```bash
 # From your project root
@@ -33,9 +54,25 @@ curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/yourus
 2. Copy `templates/prompt-system.md` → `.github/prompt-system.md`
 3. Copy `templates/copilot-instructions.md` → `.github/copilot-instructions.md`
 
-### Step 2: Customize (Optional)
+**Step 2: Reload VS Code**
 
-Edit `.github/copilot-instructions.md` to add your project context:
+Copilot will automatically detect the instructions.
+
+---
+
+### For Other AI Assistants (Claude, ChatGPT, etc.)
+
+1. Share `PROMPT-Protocol-Web-v2.1.md` as context
+2. Reference PROMPT tags in your prompts
+3. Validate manually using checklists
+
+---
+
+### Customization (Optional)
+
+**For Cursor:** Edit `.cursorrules` to add project-specific context
+
+**For Copilot:** Edit `.github/copilot-instructions.md` to add your project context:
 
 ```markdown
 ## Project Context

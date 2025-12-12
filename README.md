@@ -49,12 +49,18 @@
 
 ### 1. Add to Your Project
 
-Copy these files to your repository:
+**For Cursor AI:**
+```bash
+curl -o .cursorrules https://raw.githubusercontent.com/yourusername/prompt-protocol/main/templates/.cursorrules
+```
 
+**For GitHub Copilot (VS Code):**
 ```bash
 curl -o .github/prompt-system.md https://raw.githubusercontent.com/yourusername/prompt-protocol/main/templates/prompt-system.md
 curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/yourusername/prompt-protocol/main/templates/copilot-instructions.md
 ```
+
+**Or manually:** Copy template files from `templates/` to your project root or `.github/` directory.
 
 ### 2. Use in Code Comments
 
@@ -152,6 +158,36 @@ Balanced, production-ready approach.
 - **[Validation Guide](docs/VALIDATION_GUIDE.md)** - How to verify AI followed the rules
 - **[Examples](docs/EXAMPLES.md)** - Real-world usage patterns
 - **[Complete Rules](PROMPT-Protocol-Web-v2.1.md)** - Full reference documentation
+
+---
+
+## 🤖 AI Assistant Setup
+
+PROMPT Protocol works with multiple AI assistants:
+
+| AI Assistant | Setup File | Location | Status |
+|--------------|------------|----------|--------|
+| **Cursor AI** | `.cursorrules` | Project root | ✅ Full support |
+| **GitHub Copilot** | `copilot-instructions.md` | `.github/` | ✅ Full support |
+| **Windsurf** | `.windsurfrules` | Project root | 🚧 Coming soon |
+| **Claude** | Context file | Manual paste | ✅ Works via docs |
+
+### Quick Setup by IDE
+
+**Using Cursor:**
+1. Copy `templates/.cursorrules` to your project root
+2. Restart Cursor
+3. Start using PROMPT tags in comments
+
+**Using VS Code + Copilot:**
+1. Copy templates to `.github/` directory
+2. Reload window
+3. Copilot will read instructions automatically
+
+**Using other AI assistants:**
+1. Share `PROMPT-Protocol-Web-v2.1.md` as context
+2. Reference PROMPT tags in your prompts
+3. Validate generated code manually
 
 ---
 

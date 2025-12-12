@@ -1,0 +1,298 @@
+# PROMPT Protocol - Cursor AI Rules
+
+## About PROMPT Protocol
+
+This repository uses the **PROMPT Protocol** - a structured tagging system for guiding AI assistants toward specific development goals with explicit rule sets.
+
+**Version:** 2.1.0 (Web Development)  
+**Documentation:** See `PROMPT-Protocol-Web-v2.1.md` and `.github/prompt-system.md`
+
+---
+
+## How PROMPT Works
+
+When you see a comment or instruction with `PROMPT X-[level]`, apply the corresponding rules:
+
+### Syntax
+```
+PROMPT X-[level]
+```
+
+- `X` = Category letter: **P**, **R**, **O**, **M**, **P**, **T**
+- `[level]` = Depth: **min** (3 rules), **std** (6-9 rules), **max** (12 rules)
+
+### Categories
+
+| Letter | Focus Area | Use For |
+|--------|------------|---------|
+| **P** | Performance | Speed, optimization, bundle size, query efficiency |
+| **R** | Rules & Structure | Architecture, code organization, design patterns |
+| **O** | Output & UX | Design, accessibility, UI, user experience |
+| **M** | Modeling | Database schema, types, data validation |
+| **P** | Patterns | Code quality, testing, maintainability |
+| **T** | Types | TypeScript, validation, error handling |
+
+---
+
+## Rule Sets Reference
+
+### P: Performance
+
+**[min] - 3 rules:**
+1. Use Next.js Image component for all images
+2. Avoid N+1 database queries (use joins or relation includes)
+3. Add loading states for all async operations
+
+**[std] - 9 rules (includes [min] + 6 more):**
+4. Implement caching strategy (SWR, React Query, or Next.js cache)
+5. Lazy load routes with dynamic imports
+6. Use indexes on frequently queried database fields
+7. Compress and convert images to WebP format
+8. Debounce search inputs and expensive operations
+9. Optimize bundle size with next/bundle-analyzer
+
+**[max] - 12 rules (includes [std] + 3 more):**
+10. Profile performance with Lighthouse (target >90 score)
+11. Use edge functions and CDN for static assets
+12. Implement incremental static regeneration (ISR)
+
+---
+
+### R: Rules & Structure
+
+**[min] - 3 rules:**
+1. Use meaningful file/folder names (no abbreviations)
+2. Separate concerns (components, utils, hooks, services)
+3. Follow consistent naming conventions across the project
+
+**[std] - 9 rules:**
+4. Design APIs following REST conventions or tRPC patterns
+5. Use custom hooks to extract reusable logic
+6. Keep functions under 50 lines of code
+7. Organize imports at top (types, libs, utils, components)
+8. Use early returns to reduce nesting depth
+9. Extract magic numbers and strings to named constants
+
+**[max] - 12 rules:**
+10. Prefer composition over inheritance
+11. Use functional programming patterns when applicable
+12. Document complex logic and design decisions
+
+---
+
+### O: Output & UX
+
+**[min] - 3 rules:**
+1. Use shadcn/ui components as base
+2. Apply Tailwind CSS utility classes
+3. Mobile-first responsive design (test sm, md, lg, xl breakpoints)
+
+**[std] - 9 rules:**
+4. Use semantic HTML (header, nav, main, article, section)
+5. Implement loading, empty, and error UI states
+6. Ensure keyboard navigation works (Tab, Enter, Escape)
+7. Use Lucide React icons consistently
+8. Add ARIA labels and attributes for accessibility
+9. Test color contrast meets WCAG AA minimum (4.5:1)
+
+**[max] - 12 rules:**
+10. Support dark mode with proper color tokens
+11. Add smooth transitions (100-300ms) for interactions
+12. Test with real content (never use lorem ipsum in production)
+
+---
+
+### M: Modeling
+
+**[min] - 3 rules:**
+1. Use TypeScript types matching database schema
+2. Define foreign keys and relationships explicitly
+3. Use meaningful table/field names (no abbreviations)
+
+**[std] - 9 rules:**
+4. Add created_at and updated_at timestamps to all tables
+5. Use UUIDs for primary keys instead of auto-increment
+6. Add indexes on frequently queried fields
+7. Use Zod schemas for runtime input validation
+8. Implement RLS (Row Level Security) policies for Supabase
+9. Document schema relationships and constraints
+
+**[max] - 12 rules:**
+10. Consider database normalization vs denormalization trade-offs
+11. Plan for data migrations and schema versioning
+12. Add database constraints (CHECK, UNIQUE, NOT NULL)
+
+---
+
+### P: Patterns (Code Quality & Testing)
+
+**[min] - 3 rules:**
+1. Use TypeScript strict mode (no `any` types)
+2. Validate all inputs with Zod schemas
+3. Handle errors explicitly (try-catch, error boundaries)
+
+**[std] - 9 rules:**
+4. Use meaningful variable/function names (no abbreviations)
+5. Write unit tests for business logic (Vitest, Jest)
+6. Document complex logic with JSDoc or comments
+7. Follow ESLint rules (no warnings, only errors)
+8. Use React hooks correctly (dependency arrays, custom hooks)
+9. Extract magic numbers to named constants
+
+**[max] - 12 rules:**
+10. Add integration and E2E tests for critical paths
+11. Use consistent error handling patterns across codebase
+12. Implement proper logging and debugging capabilities
+
+---
+
+### T: Types (TypeScript & Validation)
+
+**[min] - 3 rules:**
+1. Use TypeScript in strict mode
+2. Validate API inputs with Zod or similar
+3. Handle errors explicitly with try-catch
+
+**[std] - 9 rules:**
+4. Export and reuse types across modules
+5. Use discriminated unions for complex types
+6. Validate environment variables at runtime
+7. Use type guards for runtime type checking
+8. Avoid type assertions (use `as`) unless absolutely necessary
+9. Document complex types with JSDoc
+
+**[max] - 12 rules:**
+10. Use branded types for domain-specific safety
+11. Implement exhaustive checking with TypeScript's never type
+12. Create utility types for common patterns
+
+---
+
+## Common Usage Patterns
+
+### Quick UI Component (MVP)
+```typescript
+// PROMPT O-[min] P-[min]
+// Simple product card with image and title
+```
+**Result:** Fast UI with shadcn/ui, Tailwind, responsive + TypeScript strict, error handling
+
+---
+
+### Production Feature
+```typescript
+// PROMPT O-[std] P-[std] M-[min]
+// User dashboard with data table and filters
+```
+**Result:** Full UX (accessibility, states, semantic HTML) + solid code quality + basic types
+
+---
+
+### Backend API
+```typescript
+// PROMPT M-[std] T-[std] R-[min]
+// POST /api/products - Create product with validation
+```
+**Result:** Proper schema, Zod validation, RLS + strong types + clean structure
+
+---
+
+### Performance Critical
+```typescript
+// PROMPT P-[max] O-[std]
+// Image gallery with 1000+ images, virtual scrolling
+```
+**Result:** All performance optimizations + good UX
+
+---
+
+## How to Apply PROMPT Tags
+
+### In Code Comments
+```typescript
+// PROMPT O-[std] M-[min]
+// Create a product card component
+export function ProductCard({ product }: ProductCardProps) {
+  // Cursor will follow UX rules 1-9 + Modeling rules 1-3
+}
+```
+
+### In Chat/Instructions
+```
+PROMPT M-[std] T-[std]
+
+Create a Supabase schema for blog with:
+- posts, authors, categories tables
+- Include Zod schemas and RLS policies
+```
+
+### Multiple Categories
+```typescript
+// PROMPT O-[std] P-[std] M-[min] T-[min]
+// Complete production feature
+```
+
+---
+
+## Project Context
+
+**Tech Stack:**
+- Framework: Next.js 14+
+- Database: Supabase (PostgreSQL)
+- Styling: Tailwind CSS + shadcn/ui
+- Validation: Zod
+- Testing: Vitest
+- Icons: Lucide React
+
+---
+
+## Default Behavior
+
+**When PROMPT tag is present:**
+- Strictly follow the activated rules
+- Prioritize categories in order specified
+- Combine rules logically
+
+**When NO PROMPT tag:**
+- Use balanced judgment across all categories
+- Prioritize code quality and maintainability
+- Follow general web development best practices
+- Assume [std] level for production code
+
+---
+
+## Validation
+
+After generating code, verify:
+
+1. **Check activated rules** - Did I follow all specified rules?
+2. **Use validation markers:**
+   - ✓ = Should be automatically validatable (TypeScript, ESLint)
+   - ◐ = Requires manual review
+3. **Reference checklist** in `.github/prompt-system.md`
+
+---
+
+## Resources
+
+- **Full Documentation:** `PROMPT-Protocol-Web-v2.1.md`
+- **Rule Reference:** `.github/prompt-system.md`
+- **Getting Started:** `docs/GETTING_STARTED.md`
+- **Validation Guide:** `docs/VALIDATION_GUIDE.md`
+- **Examples:** `docs/EXAMPLES.md`
+
+---
+
+## Notes for Cursor AI
+
+- **Priority:** PROMPT rules override general best practices
+- **Combination:** When multiple categories specified, apply all rules
+- **Levels:** [min] = subset, [std] = includes [min], [max] = includes [std]
+- **Conflicts:** If rules conflict, prioritize in order: P → R → O → M → P → T
+- **Uncertainty:** If PROMPT tag unclear, ask for clarification
+
+---
+
+**PROMPT Protocol Version:** 2.1.0  
+**Last Updated:** 2025-12-12  
+**Optimized for:** Web Development (React/Next.js)
