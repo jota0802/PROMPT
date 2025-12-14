@@ -1,10 +1,15 @@
 {
   "name": "prompt-protocol-vscode",
-  "displayName": "PROMPT Protocol Validator",
-  "description": "Validate AI-generated code against PROMPT Protocol rules in real-time",
+  "displayName": "PROMPT Protocol - AI Code Validator",
+  "description": "Real-time validation of AI-generated code against PROMPT Protocol rules. Ensures code quality, best practices, and consistency in Next.js, React, TypeScript projects with instant feedback.",
   "version": "0.1.0",
   "publisher": "prompt-protocol",
-  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jota0802/PROMPT.git",
+    "directory": "extension/packages/vscode-extension"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -82,11 +87,14 @@
     "vscode:prepublish": "npm run build",
     "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
     "dev": "npm run build -- --watch",
-    "test": "vitest"
+    "test": "vitest",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.22.0",
     "esbuild": "^0.19.10",
     "typescript": "^5.3.3",
     "vitest": "^1.0.4"

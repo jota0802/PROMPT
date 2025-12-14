@@ -98,6 +98,28 @@ Each letter represents a focus area with specific rules:
 | **P** - Performance | Speed, optimization, bundle size | 3 | 9 | 12 |
 | **R** - Rules & Structure | Architecture, code organization | 3 | 9 | 12 |
 | **O** - Output & UX | Design, accessibility, UI | 3 | 9 | 12 |
+| **M** - Modeling | Data schemas, types, validation | 3 | 9 | 12 |
+| **P** - Patterns | Best practices, conventions | 3 | 9 | 12 |
+| **T** - Types | TypeScript, type safety | 3 | 9 | 12 |
+
+### 🆕 VSCode Extension Available!
+
+**Real-time validation** of your code against PROMPT rules:
+
+```bash
+# Install from marketplace (search "PROMPT Protocol")
+# Or install from VSIX
+code --install-extension prompt-protocol-vscode-0.1.0.vsix
+```
+
+**Features:**
+- ✅ Instant validation as you code
+- ✅ 27 rules across 3 categories (O, Patterns, P)
+- ✅ Inline diagnostics with red squiggles
+- ✅ Status bar compliance indicator
+- ✅ Problems panel integration
+
+See [extension/](extension/) for details.
 | **M** - Modeling | Database schema, types, validation | 3 | 9 | 12 |
 | **P** - Patterns | Code quality, testing, maintainability | 3 | 9 | 12 |
 | **T** - Types | TypeScript, validation, error handling | 3 | 9 | 12 |

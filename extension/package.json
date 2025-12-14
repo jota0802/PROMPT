@@ -1,5 +1,6 @@
 {
   "name": "prompt-protocol-monorepo",
+  "icon": "icon.png",
   "version": "0.1.0",
   "private": true,
   "description": "PROMPT Protocol Extension - Validate AI-generated code against PROMPT rules",
